@@ -7,7 +7,7 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const session = require("express-session");
 
-require('dotenv').config();
+// require('dotenv').config();
 
 const sessionsController = require("./controllers/sessions.js");
 const studentController = require("./controllers/student.js");
