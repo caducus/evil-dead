@@ -9,10 +9,10 @@ const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 
+const studentController = require("./controllers/student.js");
+
 const app = express ();
 const db = mongoose.connection;
-
-const SkillEntry = require("./models/SkillEntry.js");
 
 // =====================
 // Port
@@ -49,23 +49,20 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+app.use("/student", studentController);
 
-// =====================
+// ===========================
 // Routes
-// =====================
+// ===========================
 
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
+app.get("/", (req, res) => {
+  res.render("index.ejs")
 });
 
-app.get('/student' , (req, res) => {
-  res.render('/student/index.ejs');
-});
-
-// =====================
+// ===========================
 // Listener
-// =====================
+// ===========================
 
-app.listen(port, () =>
-  console.log( 'Listening on port:', port
-));
+app.listen(port, () => {
+  console.log("I'm totes listenin' on port: " + port);
+});

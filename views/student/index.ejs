@@ -4,6 +4,17 @@
     <% include ../partials/head.ejs %>
   </head>
   <body>
-    <h1>Student Index Page</h1>
+    <h1>P.A.S.S.E.D</h1>
+    <h2>Physician's Assistant Student Skill-Entry Data</h2>
+    <ul>
+      <% for (let i = 0; i < allSkills.length; i++) { %>
+        <li>
+          <a href="/student/<%=allSkills[i].id; %>">
+          <%=allSkills[i].studentID; %></a><br />
+          <%=allSkills[i].rotation; %>
+        </li>
+      <% } %>
+    </ul>
+    <a href="/student/new">Add New Skill Entry</a>
   </body>
 </html>
