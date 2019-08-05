@@ -1,6 +1,3 @@
-// testing to make sure env is connected
-// console.log(process.env.MONGODB_URI);
-
 // =====================
 // Dependencies
 // =====================
@@ -8,8 +5,13 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
+const session = require("express-session");
 
+require('dotenv').config();
+
+const sessionsController = require("./controllers/sessions.js");
 const studentController = require("./controllers/student.js");
+const userController = require("./controllers/users.js");
 
 const app = express ();
 const db = mongoose.connection;
@@ -49,15 +51,25 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+app.use("/sessions", sessionsController);
 app.use("/student", studentController);
+app.use("/users", userController);
 
 // ===========================
 // Routes
 // ===========================
 
 app.get("/", (req, res) => {
-  res.render("index.ejs")
+  res.render("index.ejs", {
+    currentUser: req.session.currentUser
+  });
 });
+
 
 // ===========================
 // Listener

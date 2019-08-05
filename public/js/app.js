@@ -2,16 +2,19 @@
 
 $(() => {
   // array containing the names of the rotations
-  const rotationsArray = ["-- select --", "Rotation", "Rotation 2", "Rotation 3", "Rotation 4"];
+  const rotationsArray = ["-- select --", "Family Medicine", "Emergency Medicine", "Internal Medicine", "Surgery", "Women's Health", "Pediatrics", "Psychiatry"];
 
-  const preceptorArray = ["-- select --", "Dr. Busybody", "Dr. OldFuddy", "Dr. Fussalot", "Dr. Pepper"];
+  const preceptorArray = ["-- select --", "Dr. Acula", "Dr. Busybody", "Dr. Fussalot", "Dr. OldFuddy", "Dr. Pepper"];
 
   // array of objects containing the skills of each rotation
   const rotationSkills = {
-    rotation1: ["-- select --", "Skill 101", "Skill 102", "Skill 103", "Skill 104"],
-    rotation2: ["-- select --", "Skill 201", "Skill 202", "Skill 203", "Skill 204"],
-    rotation3: ["-- select --", "Skill 301", "Skill 302", "Skill 303", "Skill 304"],
-    rotation4: ["-- select --", "Skill 401", "Skill 402", "Skill 403", "Skill 404"]
+    rotation1: ["-- select --", "Perform injections", "Perform throat swab", "Perform venipuncture", "Perform age-appropriate well-child history & physical exam", "Perform pelvic exam to include speculum exam", "Perform mental status exam"],
+    rotation2: ["-- select --", "Create and apply splint", "Administer local anesthesia", "Perform incision and drainage of abscess", "Use universal precautions & Sterile procedures", "Perform injections", "Perform throat swab", "Perform venipuncture", "Perform IV catheterization", "Perform urinary catheter insertion & removal", "Perform wound closure & care", "Perform pelvic exam to include speculum exam", "Perform mental status exam"],
+    rotation3: ["-- select --", "Perform injections", "Perform throat swab", "Perform IV catheterization", "Perform mental status exam"],
+    rotation4: ["-- select --", "Use universal precautions & Sterile procedures", "Perform IV catheterization", "Assist in surgical procedures", "Perform urinary catheter insertion & removal", "Perform wound closure & care"],
+    rotation5: ["-- select --", "Perform urinary catheter insertion & removal", "Perform wound closure & care", "Perform pelvic exam to include speculum exam", "Perform prenatal exam to include fundal height measurement & fetal heart tone"],
+    rotation6: ["-- select --", "Perform injections", "Perform throat swab", "Perform age-appropriate well-child history & physical exam"],
+    rotation7: ["-- select --", "Perform mental status exam"]
   };
 
   // grab list element from the dom
@@ -27,7 +30,8 @@ $(() => {
   // list the options in rotationList upon load
   for (let i = 1; i < rotationsArray.length; i++) {
     $optionElement = $("<option>");
-    $optionElement.val("rotation" + [i]);
+    $optionElement.attr("id", "rotation" + [i])
+    $optionElement.val(rotationsArray[i]);
     $optionElement.text(rotationsArray[i]);
     $rotationList.append($optionElement);
   };
@@ -38,9 +42,9 @@ $(() => {
   $preceptorList.append($pOptionElement);
 
   // list the options in preceptorList upon load
-  for (let i = 1; i < rotationsArray.length; i++) {
+  for (let i = 1; i < preceptorArray.length; i++) {
     $optionElement = $("<option>");
-    $optionElement.val("preceptor" + [i]);
+    $optionElement.val(preceptorArray[i]);
     $optionElement.text(preceptorArray[i]);
     $preceptorList.append($optionElement);
   };
@@ -51,7 +55,7 @@ $(() => {
     $skillList.empty();
 
     // select the current value of the rotation list
-    let rotationSelectedValue = $rotationList.val();
+    let rotationSelectedValue = $rotationList.children(":selected").attr("id");
 
     // save the array of skills that corrosponds with current value of the rotation list
     let skillArray = rotationSkills[rotationSelectedValue];
@@ -62,9 +66,9 @@ $(() => {
     $skillList.append($skillElement0);
 
     // populate the data from the skillArray into the second list
-    for (let i = 1; i < rotationsArray.length; i++) {
+    for (let i = 1; i < skillArray.length; i++) {
       $skillElement = $("<option>");
-      $skillElement.val("skill" + [i]);
+      $skillElement.val(skillArray[i]);
       $skillElement.text(skillArray[i]);
       $skillList.append($skillElement);
     };
