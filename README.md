@@ -37,11 +37,13 @@ https://caducus-passed.herokuapp.com/
 
 ## User Stories
 ![Example create_user](./public/images/passed-main.png)
-![Example create_user](./public/images/passed-entry-list.png)
-![Example create_user](./public/images/passed-create-entry.png)
 ---
 * As a user, I should be able to create an account that is password protected.
 * As a user, when I log in, I should be greeted by name, and given a link to proceed to my list of entries.
+---
+![Example create_user](./public/images/passed-entry-list.png)
+![Example create_user](./public/images/passed-create-entry.png)
+---
 * As a user, when I click "New Skill Entry", I should be given a simple, intuitive drop down form that populates based on my Rotation selection.
 * As a user, when I click on an individual entry, I should be able to edit, update, and delete it.
 > this is simply to reach full crud; in future versions, students will not be given this access, however admins will always be allowed to edit, update, and delete.
