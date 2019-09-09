@@ -27,13 +27,13 @@ https://caducus-passed.herokuapp.com/
 * Heroku
 
 ## Dependencies
-bcrypt v.3.0.6
-dotenv v.8.0.0
-ejs v.2.6.2
-express v.4.17.1
-express-session v.1.16.2
-method-override v.3.0.0
-mongoose v.5.6.8
+* bcrypt v.3.0.6
+* dotenv v.8.0.0
+* ejs v.2.6.2
+* express v.4.17.1
+* express-session v.1.16.2
+* method-override v.3.0.0
+* mongoose v.5.6.8
 
 ## User Stories
 * As a user, I should be able to create an account that is password protected.
